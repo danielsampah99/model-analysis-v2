@@ -3,6 +3,11 @@
   "private": true,
   "description": "v2 of the model analysis app built with electron",
   "main": "main.ts",
+  "author": {
+  	"name": "Sampah",
+   	"email": "jsampah@gmail.com",
+    "url": "https://datadomtech.com"
+  },
   "version": "0.0.1",
   "license": "UNLICENSED",
   "scripts": {
