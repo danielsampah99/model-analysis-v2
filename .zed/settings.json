@@ -1,35 +1,49 @@
 {
-  "files.watcherExclude": {
-    "**/routeTree.gen.ts": true
-  },
-  "search.exclude": {
-    "**/routeTree.gen.ts": true
-  },
-  "files.readonlyInclude": {
-    "**/routeTree.gen.ts": true
-  },
-  "[javascript]": {
-    "editor.defaultFormatter": "biomejs.biome"
-  },
-  "[javascriptreact]": {
-    "editor.defaultFormatter": "biomejs.biome"
-  },
-  "[typescript]": {
-    "editor.defaultFormatter": "biomejs.biome"
-  },
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "biomejs.biome"
-  },
-  "[json]": {
-    "editor.defaultFormatter": "biomejs.biome"
-  },
-  "[jsonc]": {
-    "editor.defaultFormatter": "biomejs.biome"
-  },
-  "[css]": {
-    "editor.defaultFormatter": "biomejs.biome"
-  },
-  "editor.codeActionsOnSave": {
-    "source.organizeImports.biome": "explicit"
-  }
+	"file_scan_exclusions": [
+		"**/routeTree.gen.ts"
+	],
+	"formatter": {
+		"language_server": {
+			"name": "biome"
+		}
+	},
+	"code_actions_on_format": {
+		"source.fixAll.biome": true,
+		"source.organizeImports": true
+	},
+	"language_servers": ["biome", "!graphql", "!eslint", "..."],
+	"autosave": "on_focus_change",
+	"inlay_hints": {
+		"enabled": true,
+		"show_other_hints": true,
+		"show_parameter_hints": true,
+		"show_type_hints": true,
+		"show_background": false,
+		"show_value_hints": true
+	},
+	"languages": {
+		"TypeScript": {
+			"prettier": { "allowed": false },
+			"language_servers": ["biome", "!vtsls", "!eslint", "!vscode-css-language-server", "!graphql", "vscode-css-language-server", "..."],
+			"formatter": {
+				"language_server": { "name": "biome" }
+			},
+			"code_actions_on_format": {
+				"source.fixAll.biome": true,
+				"source.organizeImports.biome": true
+			}
+		},
+		"TSX": {
+			"formatter": {
+				"language_server": {
+					"name": "biome"
+				}
+			},
+			"language_servers": ["biome", "!vtsls", "!eslint", "!vscode-css-language-server", "!graphql", "vscode-css-language-server", "..."],
+			"code_actions_on_format": {
+				"source.fixAll.biome": true,
+				"source.organizeImports.biome": true
+			}
+		}
+	}
 }
