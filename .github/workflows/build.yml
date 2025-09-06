@@ -1,8 +1,7 @@
 name: Build Electron App
 
 
-on:
-  workflow_dispatch:
+on: ['push', pull_request]
 
 jobs:
   build:
@@ -32,5 +31,5 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: electron-dist-${{ matrix.os }}
+          name: model-analysis-for-${{ matrix.os }}
           path: out/make/
