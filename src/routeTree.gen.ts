@@ -9,12 +9,24 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as RunDataRouteImport } from './routes/run-data'
+import { Route as ParamsRouteImport } from './routes/params'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProviderPartnerIndexRouteImport } from './routes/provider-partner/index'
 import { Route as AdminIndexRouteImport } from './routes/admin/index'
 import { Route as DemoFormSimpleRouteImport } from './routes/demo.form.simple'
 import { Route as DemoFormAddressRouteImport } from './routes/demo.form.address'
 
+const RunDataRoute = RunDataRouteImport.update({
+  id: '/run-data',
+  path: '/run-data',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ParamsRoute = ParamsRouteImport.update({
+  id: '/params',
+  path: '/params',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -43,6 +55,8 @@ const DemoFormAddressRoute = DemoFormAddressRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/params': typeof ParamsRoute
+  '/run-data': typeof RunDataRoute
   '/admin': typeof AdminIndexRoute
   '/provider-partner': typeof ProviderPartnerIndexRoute
   '/demo/form/address': typeof DemoFormAddressRoute
@@ -50,6 +64,8 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/params': typeof ParamsRoute
+  '/run-data': typeof RunDataRoute
   '/admin': typeof AdminIndexRoute
   '/provider-partner': typeof ProviderPartnerIndexRoute
   '/demo/form/address': typeof DemoFormAddressRoute
@@ -58,6 +74,8 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/params': typeof ParamsRoute
+  '/run-data': typeof RunDataRoute
   '/admin/': typeof AdminIndexRoute
   '/provider-partner/': typeof ProviderPartnerIndexRoute
   '/demo/form/address': typeof DemoFormAddressRoute
@@ -67,6 +85,8 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/params'
+    | '/run-data'
     | '/admin'
     | '/provider-partner'
     | '/demo/form/address'
@@ -74,6 +94,8 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/params'
+    | '/run-data'
     | '/admin'
     | '/provider-partner'
     | '/demo/form/address'
@@ -81,6 +103,8 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/params'
+    | '/run-data'
     | '/admin/'
     | '/provider-partner/'
     | '/demo/form/address'
@@ -89,6 +113,8 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ParamsRoute: typeof ParamsRoute
+  RunDataRoute: typeof RunDataRoute
   AdminIndexRoute: typeof AdminIndexRoute
   ProviderPartnerIndexRoute: typeof ProviderPartnerIndexRoute
   DemoFormAddressRoute: typeof DemoFormAddressRoute
@@ -97,6 +123,20 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/run-data': {
+      id: '/run-data'
+      path: '/run-data'
+      fullPath: '/run-data'
+      preLoaderRoute: typeof RunDataRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/params': {
+      id: '/params'
+      path: '/params'
+      fullPath: '/params'
+      preLoaderRoute: typeof ParamsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -137,6 +177,8 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ParamsRoute: ParamsRoute,
+  RunDataRoute: RunDataRoute,
   AdminIndexRoute: AdminIndexRoute,
   ProviderPartnerIndexRoute: ProviderPartnerIndexRoute,
   DemoFormAddressRoute: DemoFormAddressRoute,

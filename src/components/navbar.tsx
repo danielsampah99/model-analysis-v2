@@ -12,7 +12,7 @@ export const NavBar = () => {
 	return (
 		<div
 			id="nav-bar"
-			className="bg-white shadow-sm fixed top-0 w-full backdrop-blur-lg"
+			className="bg-white shadow-sm fixed mb-10 block top-0 w-full backdrop-blur-lg"
 		>
 			<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 				<div className="flex h-16 justify-between">
